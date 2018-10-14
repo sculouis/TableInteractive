@@ -1,0 +1,87 @@
+<div>
+<script type="text/template" class="template" id="prDetail">
+<tbody PRDetailID="<%= PRDetailID %>" QDetailID="<%= QDetailID %>">
+	<tr id="detailRow1">
+		<td rowspan="200">
+			<input type="checkbox" class="DetailCheckbox" />
+		</td>
+		<td class="prNum" prID="<%= PRID %>">
+			<%= PRNum %>
+		</td>
+		<td class="qoNum">
+			<%= QuoteNum %>
+		</td>
+		<td>
+			<%= CategoryName %>
+		</td>
+		<td>
+			<%= ItemDescription %>
+		</td>
+		<td>
+			<%= Sum %>
+		</td>
+		<td>
+			<%= UomName %>
+		</td>
+		<td>
+			<div class="ExpandDetail">
+				<i class="toggleArrow fas fa-angle-down fa-lg"></i>
+			</div>
+		</td>
+		<td class="Price" style="display:none">
+			<%= Price %>
+		</td>
+	</tr>
+	<tr style="display:none">
+		<th class="th-title-1">幣別</th>
+		<th class="th-title-1" colspan="2">原幣報價單價</th>
+		<th class="th-title-1">報價經辦</th>
+		<th class="th-title-1" colspan="3">發票管理人</th>
+	</tr>
+	<tr style="display:none" id="detailRow2">
+		<td>
+			<%= CurrencyCode %>
+		</td>
+		<td colspan="2">
+			<%= ForigenPrice %>
+		</td>
+		<td>
+			<%= PurchaseEmpName + '(' + PurchaseEmpNum + ')' %>
+		</td>
+		<td colspan="3" class="invoiceEmp" empName="<%= InvoiceEmpName %>" empNum="<%= InvoiceEmpNum %>">
+			<%= InvoiceEmpName + '(' + InvoiceEmpNum + ')' %>
+		</td>
+	</tr>
+	<tr style="display:none">
+		<th class="th-title-1" colspan="2">送貨數量</th>
+		<th class="th-title-1" colspan="2">掛帳單位</th>
+		<th class="th-title-1" colspan="3">
+			收貨單位
+			<div class="float-right ExpandInnerDetail">
+				<a><span>展開</span></a>
+			</div>
+		</th>
+	</tr>
+	<tr style="display:none" class="InnerDetailShowBar">
+		<td colspan="7" class="text-center">
+			<b class="undone-text">請展開檢視更多項目...</b>
+		</td>
+	</tr>
+	<% _.each(PRDeliverys,function(PRDelivery) { %>
+		<tr style="display:none" prdeliveryid="<%= PRDelivery.PRDeliveryID %>">
+			<td colspan="2"><input type="checkbox" class="InnerDetailCheckbox" />
+				<%= PRDelivery.Quantity %>
+			</td>
+			<td colspan="2">
+				<%= PRDelivery.ChargeDept %>
+			</td>
+			<td colspan="3">
+				<%= PRDelivery.RcvDept %>
+			</td>
+		</tr>
+		<% });%>
+</tbody>
+</script>
+<script type="text/template" class="template" id="another">
+</script>
+</div>

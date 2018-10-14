@@ -1,2 +1,0 @@
-# TableInteractive
-Created with CodeSandbox
